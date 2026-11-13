@@ -265,8 +265,64 @@ a { color: var(--blue); }
 
 .btn-header { padding: 0.75rem 1.25rem; font-size: 0.95rem; white-space: nowrap; }
 
-@media (max-width: 479px) {
-  .btn-header { padding: 0.7rem 0.9rem; font-size: 0.85rem; }
+/* Brand group: Lumora logo · 1px gold divider (70% of the logo height) ·
+   "From the House of" + The Newtown Clinic (not a link). On mobile the Newtown
+   block centres between the divider and the button; from 768px the group sits left. */
+.header-brand { display: flex; align-items: center; gap: 0.6rem; flex: 1 1 auto; min-width: 0; }
+
+.header-divider { flex: 0 0 auto; width: 1px; height: 27px; background: var(--champagne); }
+
+.header-house {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  margin-inline: auto;
+  min-width: 0;
+  text-align: center;
+}
+
+.header-house-label {
+  font-size: 0.625rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  color: var(--navy);
+  white-space: nowrap;
+}
+
+.header-house-logo { height: 29px; width: auto; }
+
+@media (min-width: 768px) {
+  .header-brand { gap: 0.9rem; flex: 0 1 auto; }
+  .header-house { margin-inline: 0; }
+  .header-divider { height: 34px; }
+  .header-house-logo { height: 34px; }
+  .header-house-label { font-size: 0.6875rem; }
+}
+
+/* Mobile: the button wraps to "Book an / Appointment" as a compact gold pill */
+@media (max-width: 767px) {
+  .btn-header {
+    flex: 0 0 auto;
+    width: min-content;
+    white-space: normal;
+    padding: 0.5rem 0.8rem;
+    font-size: 0.8rem;
+    line-height: 1.25;
+    border-radius: 999px;
+  }
+}
+
+/* Below 375px both logos scale down proportionally so one row still fits at 320px */
+@media (max-width: 374px) {
+  .header-inner { gap: 0.5rem; }
+  .header-brand { gap: 0.5rem; }
+  .header-logo img { height: 32px; }
+  .header-divider { height: 22px; }
+  .header-house-logo { height: 24px; }
+  .header-house-label { font-size: 0.5625rem; }
+  .btn-header { padding: 0.45rem 0.7rem; font-size: 0.75rem; }
 }
 
 /* ---------- 2. Hero ---------- */

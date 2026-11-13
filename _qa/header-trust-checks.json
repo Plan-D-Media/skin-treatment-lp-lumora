@@ -1,0 +1,834 @@
+{
+ "320": {
+  "vw": 320,
+  "headerH": 72,
+  "innerH": 72,
+  "lumora": {
+   "l": 20,
+   "t": 20,
+   "r": 79.7,
+   "b": 52,
+   "w": 59.7,
+   "h": 32
+  },
+  "divider": {
+   "l": 87.7,
+   "t": 25,
+   "r": 88.7,
+   "b": 47,
+   "w": 1,
+   "h": 22
+  },
+  "house": {
+   "l": 104,
+   "t": 17.6,
+   "r": 183.5,
+   "b": 54.4,
+   "w": 79.5,
+   "h": 36.8
+  },
+  "houseLogo": {
+   "l": 109,
+   "t": 30.4,
+   "r": 178.6,
+   "b": 54.4,
+   "w": 69.6,
+   "h": 24
+  },
+  "label": {
+   "l": 104,
+   "t": 17.6,
+   "r": 183.5,
+   "b": 28.4,
+   "w": 79.5,
+   "h": 10.8
+  },
+  "btn": {
+   "l": 198.9,
+   "t": 12.8,
+   "r": 300,
+   "b": 59.2,
+   "w": 101.1,
+   "h": 46.4
+  },
+  "btnText": "Book an Appointment",
+  "btnLines": 2.1333333333333333,
+  "headerOverlap": false,
+  "headerOverflow": false,
+  "headerSameRow": true,
+  "trustOneRow": true,
+  "colWidths": [
+   102.7,
+   102.7,
+   102.7
+  ],
+  "labels": [
+   {
+    "text": "One-to-One Doctor Consultation",
+    "sw": 91,
+    "cw": 91,
+    "lines": 3,
+    "overflow": false
+   },
+   {
+    "text": "Advanced Skin, Hair & Aesthetic Technology",
+    "sw": 90,
+    "cw": 90,
+    "lines": 3,
+    "overflow": false
+   },
+   {
+    "text": "Open 7 Days a\u00a0Week",
+    "sw": 90,
+    "cw": 90,
+    "lines": 2,
+    "overflow": false
+   }
+  ],
+  "icons": [
+   38,
+   38,
+   38
+  ],
+  "docOverflow": false,
+  "scrollPad": "84px",
+  "houseVsLumora": 1.15,
+  "dividerVsLumora": 0.69,
+  "houseLogoNatural": [
+   116,
+   40,
+   "newtown-clinic-logo@2x.webp"
+  ],
+  "console": [],
+  "failedRequests": [],
+  "anchors": []
+ },
+ "360": {
+  "vw": 360,
+  "headerH": 72,
+  "innerH": 72,
+  "lumora": {
+   "l": 20,
+   "t": 20,
+   "r": 79.7,
+   "b": 52,
+   "w": 59.7,
+   "h": 32
+  },
+  "divider": {
+   "l": 87.7,
+   "t": 25,
+   "r": 88.7,
+   "b": 47,
+   "w": 1,
+   "h": 22
+  },
+  "house": {
+   "l": 124,
+   "t": 17.6,
+   "r": 203.5,
+   "b": 54.4,
+   "w": 79.5,
+   "h": 36.8
+  },
+  "houseLogo": {
+   "l": 129,
+   "t": 30.4,
+   "r": 198.6,
+   "b": 54.4,
+   "w": 69.6,
+   "h": 24
+  },
+  "label": {
+   "l": 124,
+   "t": 17.6,
+   "r": 203.5,
+   "b": 28.4,
+   "w": 79.5,
+   "h": 10.8
+  },
+  "btn": {
+   "l": 238.9,
+   "t": 12.8,
+   "r": 340,
+   "b": 59.2,
+   "w": 101.1,
+   "h": 46.4
+  },
+  "btnText": "Book an Appointment",
+  "btnLines": 2.1333333333333333,
+  "headerOverlap": false,
+  "headerOverflow": false,
+  "headerSameRow": true,
+  "trustOneRow": true,
+  "colWidths": [
+   114.7,
+   114.7,
+   114.7
+  ],
+  "labels": [
+   {
+    "text": "One-to-One Doctor Consultation",
+    "sw": 103,
+    "cw": 103,
+    "lines": 3,
+    "overflow": false
+   },
+   {
+    "text": "Advanced Skin, Hair & Aesthetic Technology",
+    "sw": 102,
+    "cw": 102,
+    "lines": 3,
+    "overflow": false
+   },
+   {
+    "text": "Open 7 Days a\u00a0Week",
+    "sw": 102,
+    "cw": 102,
+    "lines": 2,
+    "overflow": false
+   }
+  ],
+  "icons": [
+   38,
+   38,
+   38
+  ],
+  "docOverflow": false,
+  "scrollPad": "84px",
+  "houseVsLumora": 1.15,
+  "dividerVsLumora": 0.69,
+  "houseLogoNatural": [
+   116,
+   40,
+   "newtown-clinic-logo@2x.webp"
+  ],
+  "console": [],
+  "failedRequests": [],
+  "anchors": []
+ },
+ "375": {
+  "vw": 375,
+  "headerH": 72,
+  "innerH": 72,
+  "lumora": {
+   "l": 20,
+   "t": 17,
+   "r": 90.8,
+   "b": 55,
+   "w": 70.8,
+   "h": 38
+  },
+  "divider": {
+   "l": 100.4,
+   "t": 22.5,
+   "r": 101.4,
+   "b": 49.5,
+   "w": 1,
+   "h": 27
+  },
+  "house": {
+   "l": 126.1,
+   "t": 14.5,
+   "r": 214.5,
+   "b": 57.5,
+   "w": 88.4,
+   "h": 43
+  },
+  "houseLogo": {
+   "l": 128.2,
+   "t": 28.5,
+   "r": 212.3,
+   "b": 57.5,
+   "w": 84.1,
+   "h": 29
+  },
+  "label": {
+   "l": 126.1,
+   "t": 14.5,
+   "r": 214.5,
+   "b": 26.5,
+   "w": 88.4,
+   "h": 12
+  },
+  "btn": {
+   "l": 245.5,
+   "t": 11,
+   "r": 355,
+   "b": 61,
+   "w": 109.5,
+   "h": 50
+  },
+  "btnText": "Book an Appointment",
+  "btnLines": 2.125,
+  "headerOverlap": false,
+  "headerOverflow": false,
+  "headerSameRow": true,
+  "trustOneRow": true,
+  "colWidths": [
+   119.7,
+   119.7,
+   119.7
+  ],
+  "labels": [
+   {
+    "text": "One-to-One Doctor Consultation",
+    "sw": 108,
+    "cw": 108,
+    "lines": 3,
+    "overflow": false
+   },
+   {
+    "text": "Advanced Skin, Hair & Aesthetic Technology",
+    "sw": 107,
+    "cw": 107,
+    "lines": 3,
+    "overflow": false
+   },
+   {
+    "text": "Open 7 Days a\u00a0Week",
+    "sw": 107,
+    "cw": 107,
+    "lines": 2,
+    "overflow": false
+   }
+  ],
+  "icons": [
+   38,
+   38,
+   38
+  ],
+  "docOverflow": false,
+  "scrollPad": "84px",
+  "houseVsLumora": 1.13,
+  "dividerVsLumora": 0.71,
+  "houseLogoNatural": [
+   116,
+   40,
+   "newtown-clinic-logo@2x.webp"
+  ],
+  "console": [],
+  "failedRequests": [],
+  "anchors": []
+ },
+ "390": {
+  "vw": 390,
+  "headerH": 72,
+  "innerH": 72,
+  "lumora": {
+   "l": 20,
+   "t": 17,
+   "r": 90.8,
+   "b": 55,
+   "w": 70.8,
+   "h": 38
+  },
+  "divider": {
+   "l": 100.4,
+   "t": 22.5,
+   "r": 101.4,
+   "b": 49.5,
+   "w": 1,
+   "h": 27
+  },
+  "house": {
+   "l": 133.6,
+   "t": 14.5,
+   "r": 222,
+   "b": 57.5,
+   "w": 88.4,
+   "h": 43
+  },
+  "houseLogo": {
+   "l": 135.7,
+   "t": 28.5,
+   "r": 219.8,
+   "b": 57.5,
+   "w": 84.1,
+   "h": 29
+  },
+  "label": {
+   "l": 133.6,
+   "t": 14.5,
+   "r": 222,
+   "b": 26.5,
+   "w": 88.4,
+   "h": 12
+  },
+  "btn": {
+   "l": 260.5,
+   "t": 11,
+   "r": 370,
+   "b": 61,
+   "w": 109.5,
+   "h": 50
+  },
+  "btnText": "Book an Appointment",
+  "btnLines": 2.125,
+  "headerOverlap": false,
+  "headerOverflow": false,
+  "headerSameRow": true,
+  "trustOneRow": true,
+  "colWidths": [
+   124.7,
+   124.7,
+   124.7
+  ],
+  "labels": [
+   {
+    "text": "One-to-One Doctor Consultation",
+    "sw": 113,
+    "cw": 113,
+    "lines": 3,
+    "overflow": false
+   },
+   {
+    "text": "Advanced Skin, Hair & Aesthetic Technology",
+    "sw": 112,
+    "cw": 112,
+    "lines": 3,
+    "overflow": false
+   },
+   {
+    "text": "Open 7 Days a\u00a0Week",
+    "sw": 112,
+    "cw": 112,
+    "lines": 2,
+    "overflow": false
+   }
+  ],
+  "icons": [
+   38,
+   38,
+   38
+  ],
+  "docOverflow": false,
+  "scrollPad": "84px",
+  "houseVsLumora": 1.13,
+  "dividerVsLumora": 0.71,
+  "houseLogoNatural": [
+   116,
+   40,
+   "newtown-clinic-logo@2x.webp"
+  ],
+  "console": [],
+  "failedRequests": [],
+  "anchors": []
+ },
+ "414": {
+  "vw": 414,
+  "headerH": 72,
+  "innerH": 72,
+  "lumora": {
+   "l": 20,
+   "t": 17,
+   "r": 90.8,
+   "b": 55,
+   "w": 70.8,
+   "h": 38
+  },
+  "divider": {
+   "l": 100.4,
+   "t": 22.5,
+   "r": 101.4,
+   "b": 49.5,
+   "w": 1,
+   "h": 27
+  },
+  "house": {
+   "l": 145.6,
+   "t": 14.5,
+   "r": 234,
+   "b": 57.5,
+   "w": 88.4,
+   "h": 43
+  },
+  "houseLogo": {
+   "l": 147.7,
+   "t": 28.5,
+   "r": 231.8,
+   "b": 57.5,
+   "w": 84.1,
+   "h": 29
+  },
+  "label": {
+   "l": 145.6,
+   "t": 14.5,
+   "r": 234,
+   "b": 26.5,
+   "w": 88.4,
+   "h": 12
+  },
+  "btn": {
+   "l": 284.5,
+   "t": 11,
+   "r": 394,
+   "b": 61,
+   "w": 109.5,
+   "h": 50
+  },
+  "btnText": "Book an Appointment",
+  "btnLines": 2.125,
+  "headerOverlap": false,
+  "headerOverflow": false,
+  "headerSameRow": true,
+  "trustOneRow": true,
+  "colWidths": [
+   132.7,
+   132.7,
+   132.7
+  ],
+  "labels": [
+   {
+    "text": "One-to-One Doctor Consultation",
+    "sw": 121,
+    "cw": 121,
+    "lines": 2,
+    "overflow": false
+   },
+   {
+    "text": "Advanced Skin, Hair & Aesthetic Technology",
+    "sw": 120,
+    "cw": 120,
+    "lines": 3,
+    "overflow": false
+   },
+   {
+    "text": "Open 7 Days a\u00a0Week",
+    "sw": 119,
+    "cw": 119,
+    "lines": 1,
+    "overflow": false
+   }
+  ],
+  "icons": [
+   38,
+   38,
+   38
+  ],
+  "docOverflow": false,
+  "scrollPad": "84px",
+  "houseVsLumora": 1.13,
+  "dividerVsLumora": 0.71,
+  "houseLogoNatural": [
+   116,
+   40,
+   "newtown-clinic-logo@2x.webp"
+  ],
+  "console": [],
+  "failedRequests": [],
+  "anchors": []
+ },
+ "768": {
+  "vw": 768,
+  "headerH": 72,
+  "innerH": 72,
+  "lumora": {
+   "l": 20,
+   "t": 12,
+   "r": 109.5,
+   "b": 60,
+   "w": 89.5,
+   "h": 48
+  },
+  "divider": {
+   "l": 123.9,
+   "t": 19,
+   "r": 124.9,
+   "b": 53,
+   "w": 1,
+   "h": 34
+  },
+  "house": {
+   "l": 139.3,
+   "t": 11.4,
+   "r": 237.9,
+   "b": 60.6,
+   "w": 98.6,
+   "h": 49.2
+  },
+  "houseLogo": {
+   "l": 139.3,
+   "t": 26.6,
+   "r": 237.9,
+   "b": 60.6,
+   "w": 98.6,
+   "h": 34
+  },
+  "label": {
+   "l": 140,
+   "t": 11.4,
+   "r": 237.2,
+   "b": 24.6,
+   "w": 97.2,
+   "h": 13.2
+  },
+  "btn": {
+   "l": 547.9,
+   "t": 15.4,
+   "r": 748,
+   "b": 56.6,
+   "w": 200.1,
+   "h": 41.2
+  },
+  "btnText": "Book an Appointment",
+  "btnLines": 1.118421052631579,
+  "headerOverlap": false,
+  "headerOverflow": false,
+  "headerSameRow": true,
+  "trustOneRow": true,
+  "colWidths": [
+   213.3,
+   213.3,
+   213.3
+  ],
+  "labels": [
+   {
+    "text": "One-to-One Doctor Consultation",
+    "sw": 202,
+    "cw": 202,
+    "lines": 2,
+    "overflow": false
+   },
+   {
+    "text": "Advanced Skin, Hair & Aesthetic Technology",
+    "sw": 201,
+    "cw": 201,
+    "lines": 2,
+    "overflow": false
+   },
+   {
+    "text": "Open 7 Days a\u00a0Week",
+    "sw": 128,
+    "cw": 128,
+    "lines": 1,
+    "overflow": false
+   }
+  ],
+  "icons": [
+   44,
+   44,
+   44
+  ],
+  "docOverflow": false,
+  "scrollPad": "84px",
+  "houseVsLumora": 1.03,
+  "dividerVsLumora": 0.71,
+  "houseLogoNatural": [
+   116,
+   40,
+   "newtown-clinic-logo@2x.webp"
+  ],
+  "console": [],
+  "failedRequests": [],
+  "anchors": []
+ },
+ "1024": {
+  "vw": 1024,
+  "headerH": 72,
+  "innerH": 72,
+  "lumora": {
+   "l": 20,
+   "t": 12,
+   "r": 109.5,
+   "b": 60,
+   "w": 89.5,
+   "h": 48
+  },
+  "divider": {
+   "l": 123.9,
+   "t": 19,
+   "r": 124.9,
+   "b": 53,
+   "w": 1,
+   "h": 34
+  },
+  "house": {
+   "l": 139.3,
+   "t": 11.4,
+   "r": 237.9,
+   "b": 60.6,
+   "w": 98.6,
+   "h": 49.2
+  },
+  "houseLogo": {
+   "l": 139.3,
+   "t": 26.6,
+   "r": 237.9,
+   "b": 60.6,
+   "w": 98.6,
+   "h": 34
+  },
+  "label": {
+   "l": 140,
+   "t": 11.4,
+   "r": 237.2,
+   "b": 24.6,
+   "w": 97.2,
+   "h": 13.2
+  },
+  "btn": {
+   "l": 803.9,
+   "t": 15.4,
+   "r": 1004,
+   "b": 56.6,
+   "w": 200.1,
+   "h": 41.2
+  },
+  "btnText": "Book an Appointment",
+  "btnLines": 1.118421052631579,
+  "headerOverlap": false,
+  "headerOverflow": false,
+  "headerSameRow": true,
+  "trustOneRow": true,
+  "colWidths": [
+   113.4,
+   113.4,
+   113.4
+  ],
+  "labels": [
+   {
+    "text": "One-to-One Doctor Consultation",
+    "sw": 102,
+    "cw": 102,
+    "lines": 3,
+    "overflow": false
+   },
+   {
+    "text": "Advanced Skin, Hair & Aesthetic Technology",
+    "sw": 101,
+    "cw": 101,
+    "lines": 3,
+    "overflow": false
+   },
+   {
+    "text": "Open 7 Days a\u00a0Week",
+    "sw": 101,
+    "cw": 101,
+    "lines": 2,
+    "overflow": false
+   }
+  ],
+  "icons": [
+   46,
+   46,
+   46
+  ],
+  "docOverflow": false,
+  "scrollPad": "84px",
+  "houseVsLumora": 1.03,
+  "dividerVsLumora": 0.71,
+  "houseLogoNatural": [
+   116,
+   40,
+   "newtown-clinic-logo@2x.webp"
+  ],
+  "console": [],
+  "failedRequests": [],
+  "anchors": []
+ },
+ "1280": {
+  "vw": 1280,
+  "headerH": 72,
+  "innerH": 72,
+  "lumora": {
+   "l": 84,
+   "t": 12,
+   "r": 173.5,
+   "b": 60,
+   "w": 89.5,
+   "h": 48
+  },
+  "divider": {
+   "l": 187.9,
+   "t": 19,
+   "r": 188.9,
+   "b": 53,
+   "w": 1,
+   "h": 34
+  },
+  "house": {
+   "l": 203.3,
+   "t": 11.4,
+   "r": 301.9,
+   "b": 60.6,
+   "w": 98.6,
+   "h": 49.2
+  },
+  "houseLogo": {
+   "l": 203.3,
+   "t": 26.6,
+   "r": 301.9,
+   "b": 60.6,
+   "w": 98.6,
+   "h": 34
+  },
+  "label": {
+   "l": 204,
+   "t": 11.4,
+   "r": 301.2,
+   "b": 24.6,
+   "w": 97.2,
+   "h": 13.2
+  },
+  "btn": {
+   "l": 995.9,
+   "t": 15.4,
+   "r": 1196,
+   "b": 56.6,
+   "w": 200.1,
+   "h": 41.2
+  },
+  "btnText": "Book an Appointment",
+  "btnLines": 1.118421052631579,
+  "headerOverlap": false,
+  "headerOverflow": false,
+  "headerSameRow": true,
+  "trustOneRow": true,
+  "colWidths": [
+   143.2,
+   143.2,
+   143.2
+  ],
+  "labels": [
+   {
+    "text": "One-to-One Doctor Consultation",
+    "sw": 132,
+    "cw": 132,
+    "lines": 2,
+    "overflow": false
+   },
+   {
+    "text": "Advanced Skin, Hair & Aesthetic Technology",
+    "sw": 131,
+    "cw": 131,
+    "lines": 3,
+    "overflow": false
+   },
+   {
+    "text": "Open 7 Days a\u00a0Week",
+    "sw": 131,
+    "cw": 131,
+    "lines": 2,
+    "overflow": false
+   }
+  ],
+  "icons": [
+   46,
+   46,
+   46
+  ],
+  "docOverflow": false,
+  "scrollPad": "84px",
+  "houseVsLumora": 1.03,
+  "dividerVsLumora": 0.71,
+  "houseLogoNatural": [
+   116,
+   40,
+   "newtown-clinic-logo@2x.webp"
+  ],
+  "console": [],
+  "failedRequests": [],
+  "anchors": []
+ }
+}
