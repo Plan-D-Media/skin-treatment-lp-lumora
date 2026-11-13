@@ -1,0 +1,343 @@
+/* ==========================================================================
+   LUMORA — Skin Treatment LP · doctor section as the hero, and section 3
+   1. Hero overrides for the Phase 1 "Our Dermatologists" section (.lmr-hero).
+      css/phase1.css is untouched; everything here is scoped to .lmr-hero and
+      loads after it.
+   2. Section 3 (.lmr-book): the booking form card (moved unchanged from the
+      old hero) beside a slider of clinic photos (js/clinic-slider.js).
+   Breakpoints match phase1.css: mobile < 768px · tablet 768–1023px · desktop >= 1024px
+   ========================================================================== */
+
+/* ---------- 1. Hero ---------- */
+
+/* The header is fixed, so the hero starts below it */
+.lmr-doctors.lmr-hero {
+  padding-top: calc(var(--header-h, 72px) + 1rem);
+}
+
+/* Names break only at spaces: never inside a word, never hyphenated */
+.lmr-hero .lmr-doc-name,
+.lmr-hero .lmr-w {
+  hyphens: none;
+  -webkit-hyphens: none;
+  overflow-wrap: normal;
+  word-break: keep-all;
+}
+
+.lmr-hero .lmr-w { white-space: nowrap; }
+
+/* ---------- Mobile: both rows of doctors above the sticky bar ---------- */
+
+@media (max-width: 767px) {
+  .lmr-doctors.lmr-hero {
+    --lmr-gutter: 8px;
+    padding-top: calc(var(--header-h, 72px) + 0.75rem);
+    padding-bottom: 2rem;
+  }
+
+  /* Both doctor rows fit above the sticky bar at 360×800 and 390×844 with the
+     supporting line still in the intro, so it stays where it was */
+  .lmr-hero .lmr-wrap { row-gap: 1rem; }
+
+  .lmr-hero .lmr-overline {
+    font-size: 0.6875rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .lmr-hero .lmr-title {
+    margin-bottom: 0.45rem;
+    line-height: 1.05;
+  }
+
+  .lmr-hero .lmr-title-light,
+  .lmr-hero .lmr-title-mid { font-size: 1.3125rem; }
+
+  .lmr-hero .lmr-title-bold { font-size: 2rem; margin-block: 0.02em; }
+
+  .lmr-hero .lmr-sub {
+    font-size: 0.9375rem;
+    line-height: 1.35;
+    margin-bottom: 0.7rem;
+  }
+
+  .lmr-hero .lmr-pill { margin-top: 0.3rem; padding: 0.2rem 0.85rem; }
+
+  .lmr-hero .lmr-panel {
+    padding: 6px;
+    border-radius: 16px;
+  }
+
+  .lmr-hero .lmr-grid { gap: 6px 4px; }
+
+  .lmr-hero .lmr-doc-card { border-radius: 10px; }
+
+  .lmr-hero .lmr-doc-text { padding: 5px 2px 6px; gap: 2px; }
+
+  .lmr-hero .lmr-doc-name { font-size: 11.5px; line-height: 1.18; }
+
+  .lmr-hero .lmr-doc-qual { font-size: 10px; line-height: 1.2; }
+
+  .lmr-hero .lmr-support { font-size: 0.875rem; }
+
+  .lmr-hero .lmr-trust,
+  .lmr-hero .lmr-actions { margin-top: 0.5rem; }
+}
+
+/* 320–379px: the longest single word, "Rajendrani", is 1px too wide at 11.5px
+   on a 360px screen, so the names step down here (never below 10.5px) */
+@media (max-width: 379px) {
+  .lmr-hero .lmr-doc-name { font-size: 11px; }
+}
+
+@media (max-width: 349px) {
+  .lmr-doctors.lmr-hero { --lmr-gutter: 6px; }
+  .lmr-hero .lmr-panel { padding: 4px; }
+  .lmr-hero .lmr-grid { gap: 6px 3px; }
+  .lmr-hero .lmr-doc-text { padding-inline: 1px; }
+  .lmr-hero .lmr-doc-name { font-size: 10.5px; }
+  .lmr-hero .lmr-doc-qual { font-size: 9.5px; }
+}
+
+/* ---------- Tablet / desktop: the section is now at the top ---------- */
+
+@media (min-width: 768px) {
+  .lmr-doctors.lmr-hero {
+    padding-top: calc(var(--header-h, 72px) + 2.5rem);
+    padding-bottom: 3.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .lmr-doctors.lmr-hero {
+    padding-top: calc(var(--header-h, 72px) + 3rem);
+    padding-bottom: 3.5rem;
+  }
+}
+
+/* ---------- 2. Section 3: booking form + clinic slider ---------- */
+
+.lmr-book {
+  --lmr-book-radius: 20px;
+  --lmr-book-shadow: 0 12px 34px rgba(12, 39, 64, 0.08), 0 2px 8px rgba(12, 39, 64, 0.04);
+
+  background: linear-gradient(180deg, var(--ice, #EDF3F8) 0%, var(--white, #FFFFFF) 100%);
+  padding: 2rem 0 3rem;
+}
+
+.lmr-book-wrap {
+  width: 100%;
+  max-width: 1360px;
+  margin-inline: auto;
+  padding-inline: 12px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas:
+    "form"
+    "slider";
+  gap: 1.5rem;
+}
+
+.lmr-book .hero-form-col { grid-area: form; min-width: 0; }
+
+.lmr-book .form-card {
+  border-radius: var(--lmr-book-radius);
+  box-shadow: var(--lmr-book-shadow);
+}
+
+/* Slider */
+
+.lmr-slider {
+  grid-area: slider;
+  position: relative;
+  min-width: 0;
+}
+
+.lmr-slider-viewport {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--lmr-book-radius);
+  background: var(--ice, #EDF3F8);
+  box-shadow: var(--lmr-book-shadow);
+  touch-action: pan-y;          /* vertical scroll stays native; horizontal swipes go to the slider */
+}
+
+.lmr-slides {
+  display: flex;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.lmr-slide {
+  position: relative;
+  flex: 0 0 100%;
+  height: 100%;
+  margin: 0;
+}
+
+.lmr-slide img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: var(--focus, center);   /* per photo: style="--focus: 88% 50%" keeps the subject in a tall crop */
+}
+
+/* Caption: bottom-left, on a soft scrim so it reads on any photo */
+.lmr-slider-caption {
+  position: absolute;
+  inset: auto 0 0 0;
+  margin: 0;
+  max-width: none;
+  padding: 2.75rem 1rem 0.85rem;
+  background: linear-gradient(180deg, rgba(12, 39, 64, 0) 0%, rgba(12, 39, 64, 0.72) 100%);
+  color: var(--white, #FFFFFF);
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: 0.01em;
+  pointer-events: none;
+}
+
+/* Controls: arrows at the sides, dots bottom-right above the caption line */
+.lmr-slider-controls {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.lmr-slider-arrow {
+  appearance: none;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  pointer-events: auto;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--blue, #1F4E79);
+  box-shadow: 0 4px 14px rgba(12, 39, 64, 0.18);
+  transition: background-color 0.2s ease;
+}
+
+.lmr-slider-prev { left: 10px; }
+.lmr-slider-next { right: 10px; }
+
+.lmr-slider-arrow:hover { background: var(--white, #FFFFFF); }
+
+.lmr-slider-arrow svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.lmr-slider-dots {
+  position: absolute;
+  right: 0.6rem;
+  bottom: 0.45rem;
+  display: flex;
+  pointer-events: auto;
+}
+
+/* 24×24 hit area around an 8px dot */
+.lmr-slider-dot {
+  appearance: none;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+}
+
+.lmr-slider-dot::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.55);
+  transition: width 0.25s ease, background-color 0.25s ease;
+}
+
+.lmr-slider-dot[aria-current="true"]::before {
+  width: 20px;
+  background: var(--white, #FFFFFF);
+}
+
+.lmr-slider-arrow:focus-visible,
+.lmr-slider-dot:focus-visible {
+  outline: 3px solid var(--champagne, #C2A25E);
+  outline-offset: 2px;
+}
+
+/* With dots on the right, keep the caption clear of them (4 dots = 96px) */
+.lmr-slider.has-controls .lmr-slider-caption { padding-right: 6.75rem; }
+
+/* Small phones: the caption needs the full width, so the dots move to the top-right
+   on a small pill that keeps them visible on light photos */
+@media (max-width: 479px) {
+  .lmr-slider-caption { font-size: 0.8125rem; padding-left: 0.85rem; }
+  .lmr-slider.has-controls .lmr-slider-caption { padding-right: 0.85rem; }
+  .lmr-slider-dots {
+    top: 0.5rem;
+    bottom: auto;
+    right: 0.5rem;
+    border-radius: 999px;
+    background: rgba(12, 39, 64, 0.38);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lmr-slides { transition: none; }
+}
+
+@media (min-width: 768px) {
+  .lmr-book { padding: 2.5rem 0 4rem; }
+
+  .lmr-book-wrap { padding-inline: 32px; gap: 2rem; }
+
+  .lmr-book { --lmr-book-radius: 24px; }
+
+  .lmr-slider-caption { font-size: 0.95rem; padding: 3rem 1.4rem 1.1rem; }
+}
+
+/* Desktop: slider left (~55%), form right (~45%); the slider takes the form card's height */
+@media (min-width: 1024px) {
+  .lmr-book { padding: 3rem 0 4.5rem; }
+
+  .lmr-book-wrap {
+    padding-inline: 24px;
+    grid-template-columns: minmax(0, 55fr) minmax(0, 45fr);
+    grid-template-areas: "slider form";
+    align-items: stretch;
+    column-gap: clamp(1.75rem, 3vw, 3rem);
+  }
+
+  .lmr-slider-viewport {
+    aspect-ratio: auto;
+    position: absolute;          /* no intrinsic height: the row height comes from the form card */
+    inset: 0;
+  }
+
+  .lmr-book .form-card { height: 100%; }
+}

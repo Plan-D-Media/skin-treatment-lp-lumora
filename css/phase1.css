@@ -1,0 +1,560 @@
+/* ==========================================================================
+   LUMORA — Skin Treatment LP · Phase 1
+   1. "Our Dermatologists" section. Every rule is scoped to .lmr-doctors.
+   2. One-button mobile bar (the call and WhatsApp buttons were removed).
+   Colours come from the brand tokens in css/style.css (fallbacks repeat them):
+     primary  --blue  #1F4E79   (white text on it: 8.7:1)
+     tint     --ice   #EDF3F8   (about 7% steel blue on white)
+   Breakpoints: mobile < 768px · tablet 768–1023px · desktop >= 1024px
+   ========================================================================== */
+
+.lmr-doctors {
+  --lmr-primary: var(--blue, #1F4E79);
+  --lmr-ink: var(--navy, #143A5C);
+  --lmr-muted: var(--muted, #5A6B7A);
+  --lmr-tint: var(--ice, #EDF3F8);
+  --lmr-tint-strong: #DCE7F1;            /* --ice deepened ~6%, for the pill and card base */
+  --lmr-line: rgba(31, 78, 121, 0.16);
+  --lmr-shadow: 0 12px 34px rgba(12, 39, 64, 0.08), 0 2px 8px rgba(12, 39, 64, 0.04);
+  --lmr-gutter: 12px;
+
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  padding: 3rem 0 3.25rem;
+  background: linear-gradient(180deg, var(--white, #FFFFFF) 0%, var(--lmr-tint) 100%);
+  color: var(--lmr-ink);
+  font-family: var(--font-body, 'Manrope', system-ui, sans-serif);
+  text-align: center;
+}
+
+/* Gentle curved shape, bottom-right */
+.lmr-doctors::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  right: -28vw;
+  bottom: -30vw;
+  width: 78vw;
+  height: 62vw;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(127, 178, 216, 0.22), rgba(127, 178, 216, 0.10) 62%, transparent);
+  pointer-events: none;
+}
+
+.lmr-doctors .lmr-wrap {
+  width: 100%;
+  max-width: 1360px;
+  margin-inline: auto;
+  padding-inline: var(--lmr-gutter);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas:
+    "intro"
+    "panel"
+    "trust"
+    "actions";
+  row-gap: 1.5rem;
+}
+
+.lmr-doctors .lmr-intro { grid-area: intro; }
+.lmr-doctors .lmr-panel { grid-area: panel; }
+.lmr-doctors .lmr-trust { grid-area: trust; }
+.lmr-doctors .lmr-actions { grid-area: actions; }
+
+/* ---------- Intro copy ---------- */
+
+.lmr-doctors p { max-width: none; margin: 0; }
+
+.lmr-doctors .lmr-overline {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--lmr-primary);
+  margin-bottom: 0.75rem;
+}
+
+.lmr-doctors .lmr-title {
+  font-family: var(--font-body, 'Manrope', system-ui, sans-serif);
+  color: var(--lmr-ink);
+  margin: 0 0 1rem;
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+}
+
+.lmr-doctors .lmr-title-line { display: block; }
+
+.lmr-doctors .lmr-title-light {
+  font-weight: 400;
+  font-size: 1.625rem;
+}
+
+.lmr-doctors .lmr-title-bold {
+  font-weight: 700;
+  font-size: 2.5rem;
+  letter-spacing: -0.03em;
+  margin-block: 0.06em;
+}
+
+.lmr-doctors .lmr-title-mid {
+  font-weight: 600;
+  font-size: 1.625rem;
+}
+
+.lmr-doctors .lmr-title-accent {
+  position: relative;
+  display: inline-block;
+  font-weight: 700;
+  color: var(--lmr-primary);
+  padding-bottom: 0.12em;
+}
+
+.lmr-doctors .lmr-swoosh {
+  position: absolute;
+  left: 4%;
+  bottom: -0.16em;
+  width: 92%;
+  height: 0.42em;
+  overflow: visible;
+  fill: none;
+  stroke: var(--lmr-primary);
+  stroke-linecap: round;
+  stroke-width: 3;
+  vector-effect: non-scaling-stroke;
+}
+
+.lmr-doctors .lmr-swoosh path + path { stroke-width: 2; opacity: 0.55; }
+
+.lmr-doctors .lmr-sub {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--lmr-ink);
+  margin-bottom: 0.85rem;
+}
+
+.lmr-doctors .lmr-pill {
+  display: block;
+  width: fit-content;
+  margin: 0.4rem auto 0;
+  padding: 0.3rem 0.95rem;
+  border-radius: 999px;
+  background: var(--lmr-tint-strong);
+  color: var(--lmr-primary);
+  font-weight: 700;
+}
+
+.lmr-doctors .lmr-support {
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--lmr-muted);
+  max-width: 34ch;
+  margin-inline: auto;
+}
+
+/* ---------- Doctor grid: always 5 × 2, all ten visible ---------- */
+
+.lmr-doctors .lmr-panel {
+  background: var(--white, #FFFFFF);
+  border-radius: 20px;
+  box-shadow: var(--lmr-shadow);
+  padding: 10px;
+}
+
+.lmr-doctors .lmr-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 10px 6px;
+}
+
+.lmr-doctors .lmr-doc { display: flex; min-width: 0; }
+
+.lmr-doctors .lmr-doc-card {
+  /* button reset */
+  appearance: none;
+  border: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 0;
+  padding: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--lmr-tint);
+  box-shadow: inset 0 0 0 1px rgba(31, 78, 121, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.lmr-doctors .lmr-doc-card:focus-visible {
+  outline: 3px solid var(--lmr-primary);
+  outline-offset: 2px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .lmr-doctors .lmr-doc-card:hover {
+    transform: translateY(-3px);
+    box-shadow: inset 0 0 0 1px rgba(31, 78, 121, 0.10), 0 10px 22px rgba(12, 39, 64, 0.14);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lmr-doctors .lmr-doc-card { transition: none; }
+  .lmr-doctors .lmr-doc-card:hover { transform: none; }
+}
+
+.lmr-doctors .lmr-doc-photo {
+  display: block;
+  aspect-ratio: 1 / 1;
+  background: #E9EDF1;   /* light grey photo well */
+  overflow: hidden;
+}
+
+.lmr-doctors .lmr-doc-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+}
+
+/* Neutral silhouette when a photo is missing (set by js/ui.js) */
+.lmr-doctors .lmr-doc-photo.is-missing img { display: none; }
+
+.lmr-doctors .lmr-doc-photo.is-missing {
+  background: #E9EDF1 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='38' r='17' fill='%23C5CED8'/%3E%3Cpath d='M16 100c3-21 17-33 34-33s31 12 34 33Z' fill='%23C5CED8'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+}
+
+.lmr-doctors .lmr-doc-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 3px;
+  padding: 6px 3px 8px;
+}
+
+.lmr-doctors .lmr-doc-name {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--lmr-ink);
+  overflow-wrap: break-word;
+  hyphens: manual;
+}
+
+.lmr-doctors .lmr-doc-qual {
+  display: block;
+  font-size: 10.5px;
+  font-weight: 400;
+  line-height: 1.25;
+  color: var(--lmr-muted);
+  overflow-wrap: break-word;
+}
+
+/* ---------- Trust row ---------- */
+
+.lmr-doctors .lmr-trust {
+  list-style: none;
+  margin: 0.25rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.lmr-doctors .lmr-trust-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.45rem;
+  padding-inline: 0.4rem;
+  min-width: 0;
+}
+
+.lmr-doctors .lmr-trust-item + .lmr-trust-item { border-left: 1px solid var(--lmr-line); }
+
+.lmr-doctors .lmr-icon {
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  fill: none;
+  stroke: var(--lmr-primary);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.lmr-doctors .lmr-trust-label {
+  font-size: 12.5px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--lmr-ink);
+}
+
+.lmr-doctors .lmr-nowrap { white-space: nowrap; }
+
+/* ---------- Location pill + CTA ---------- */
+
+.lmr-doctors .lmr-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+  margin-top: 0.25rem;
+}
+
+.lmr-doctors .lmr-loc-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  max-width: 100%;
+  padding: 0.6rem 1.1rem;
+  border: 1.5px solid var(--lmr-primary);
+  border-radius: 999px;
+  background: var(--white, #FFFFFF);
+  color: var(--lmr-primary);
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.3;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.lmr-doctors .lmr-loc-pill .lmr-icon { width: 20px; height: 20px; }
+
+/* Small phones: keep the address on one line where it fits; if it must wrap
+   (320px), wrap it into two even lines rather than a stray last word */
+@media (max-width: 413px) {
+  .lmr-doctors .lmr-loc-pill { font-size: 0.8125rem; padding: 0.55rem 0.95rem; gap: 0.4rem; text-wrap: balance; }
+  .lmr-doctors .lmr-loc-pill .lmr-icon { width: 18px; height: 18px; }
+}
+
+.lmr-doctors .lmr-loc-pill:hover { background: var(--lmr-tint); }
+
+.lmr-doctors .lmr-loc-pill:focus-visible,
+.lmr-doctors .lmr-cta:focus-visible {
+  outline: 3px solid var(--lmr-primary);
+  outline-offset: 3px;
+}
+
+.lmr-doctors .lmr-actions-divider { display: none; }
+
+.lmr-doctors .lmr-cta {
+  appearance: none;
+  border: 0;
+  margin: 0;
+  cursor: pointer;
+  font-family: inherit;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 100%;
+  min-height: 52px;
+  padding: 0.55rem 0.6rem 0.55rem 1.4rem;
+  border-radius: 999px;
+  background: var(--lmr-primary);
+  color: var(--white, #FFFFFF);       /* 8.7:1 on #1F4E79 */
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: center;
+  box-shadow: 0 10px 22px rgba(31, 78, 121, 0.24);
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.lmr-doctors .lmr-cta:hover { background: var(--navy, #143A5C); }
+
+.lmr-doctors .lmr-cta-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--white, #FFFFFF);
+}
+
+.lmr-doctors .lmr-cta-arrow svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: var(--lmr-primary);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ---------- Narrowest phones: keep 5 columns, tighten spacing ---------- */
+
+@media (max-width: 359px) {
+  .lmr-doctors { --lmr-gutter: 10px; }
+  .lmr-doctors .lmr-panel { padding: 6px; }
+  .lmr-doctors .lmr-grid { gap: 8px 4px; }
+  .lmr-doctors .lmr-doc-text { padding-inline: 2px; }
+  .lmr-doctors .lmr-doc-name { font-size: 11.5px; }
+  .lmr-doctors .lmr-doc-qual { font-size: 10px; }
+  .lmr-doctors .lmr-trust-label { font-size: 12px; }
+}
+
+/* ---------- Tablet: stacked, larger cards ---------- */
+
+@media (min-width: 768px) {
+  .lmr-doctors {
+    --lmr-gutter: 32px;
+    padding: 4.5rem 0;
+  }
+
+  .lmr-doctors::after { right: -14vw; bottom: -24vw; width: 56vw; height: 44vw; }
+
+  .lmr-doctors .lmr-wrap { row-gap: 2rem; }
+
+  .lmr-doctors .lmr-title-light,
+  .lmr-doctors .lmr-title-mid { font-size: 2.125rem; }
+
+  .lmr-doctors .lmr-title-bold { font-size: 3.25rem; }
+
+  .lmr-doctors .lmr-sub { font-size: 1.2rem; }
+
+  .lmr-doctors .lmr-pill { display: inline-block; margin: 0 0 0 0.35rem; }
+
+  .lmr-doctors .lmr-support { font-size: 1.0625rem; max-width: 46ch; }
+
+  .lmr-doctors .lmr-panel { border-radius: 24px; padding: 18px; }
+
+  .lmr-doctors .lmr-grid { gap: 14px 12px; }
+
+  .lmr-doctors .lmr-doc-text { padding: 10px 6px 12px; gap: 4px; }
+
+  /* Cards are wide enough here for whole words: ignore the &shy; break points */
+  .lmr-doctors .lmr-doc-name { font-size: 14px; hyphens: none; -webkit-hyphens: none; }
+
+  .lmr-doctors .lmr-doc-qual { font-size: 12px; }
+
+  .lmr-doctors .lmr-trust { max-width: 640px; margin-inline: auto; width: 100%; }
+
+  .lmr-doctors .lmr-trust-label { font-size: 13.5px; }
+
+  .lmr-doctors .lmr-icon { width: 34px; height: 34px; }
+
+  .lmr-doctors .lmr-cta { width: auto; min-width: 360px; font-size: 1.0625rem; }
+}
+
+/* ---------- Desktop: two columns (~36/64), bottom row spans both ---------- */
+
+@media (min-width: 1024px) {
+  .lmr-doctors {
+    --lmr-gutter: 24px;
+    padding: 5rem 0 4.5rem;
+    text-align: left;
+  }
+
+  .lmr-doctors::after { right: -8vw; bottom: -20vw; width: 44vw; height: 36vw; }
+
+  .lmr-doctors .lmr-wrap {
+    grid-template-columns: minmax(0, 36fr) minmax(0, 64fr);
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+      "intro   panel"
+      "trust   panel"
+      "actions actions";
+    column-gap: clamp(1.75rem, 3vw, 3rem);
+    row-gap: 2rem;
+    align-items: start;
+  }
+
+  .lmr-doctors .lmr-intro { align-self: end; }
+
+  .lmr-doctors .lmr-title-light,
+  .lmr-doctors .lmr-title-mid { font-size: clamp(1.75rem, 2.3vw, 2.25rem); }
+
+  .lmr-doctors .lmr-title-bold { font-size: clamp(2.6rem, 4vw, 3.6rem); }
+
+  .lmr-doctors .lmr-swoosh { left: 2%; }
+
+  .lmr-doctors .lmr-sub { font-size: 1.2rem; }
+
+  .lmr-doctors .lmr-pill { display: block; margin: 0.5rem 0 0; }
+
+  .lmr-doctors .lmr-support { margin-inline: 0; max-width: 36ch; }
+
+  .lmr-doctors .lmr-panel { padding: 20px; }
+
+  .lmr-doctors .lmr-grid { gap: 16px 14px; }
+
+  .lmr-doctors .lmr-trust { margin: 0; max-width: none; }
+
+  .lmr-doctors .lmr-trust-item {
+    align-items: flex-start;
+    text-align: left;
+    padding-inline: 0.9rem;
+  }
+
+  .lmr-doctors .lmr-trust-item:first-child { padding-left: 0; }
+
+  .lmr-doctors .lmr-trust-label { font-size: 13px; }
+
+  .lmr-doctors .lmr-actions {
+    flex-direction: row;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .lmr-doctors .lmr-loc-pill { padding: 0.8rem 1.4rem; font-size: 0.95rem; }
+
+  .lmr-doctors .lmr-actions-divider {
+    display: block;
+    width: 1px;
+    height: 40px;
+    background: var(--lmr-line);
+  }
+
+  .lmr-doctors .lmr-cta { min-width: 0; padding-left: 1.75rem; font-size: 1.0625rem; }
+}
+
+@media (min-width: 1280px) {
+  .lmr-doctors .lmr-doc-name { font-size: 15px; }
+  .lmr-doctors .lmr-doc-qual { font-size: 12.5px; }
+  .lmr-doctors .lmr-trust-label { font-size: 14px; }
+}
+
+/* ==========================================================================
+   2. Mobile bar: a single "Book Your Consultation" button
+   (the bar itself and .mobile-bar-btn are styled in css/style.css)
+   ========================================================================== */
+
+.mobile-bar-book {
+  appearance: none;
+  border: 0;
+  margin: 0;
+  cursor: pointer;
+  font-family: var(--font-body, 'Manrope', system-ui, sans-serif);
+  background: var(--navy-deep, #0C2740);
+  color: var(--white, #FFFFFF);
+}
+
+.mobile-bar-book:focus-visible {
+  outline: 3px solid var(--champagne, #C2A25E);
+  outline-offset: -5px;
+}
+
+/* Each name word is an inline-block: it moves to the next line whole, and its
+   &shy; break points are used only when the word alone is wider than the card. */
+.lmr-doctors .lmr-w { display: inline-block; max-width: 100%; }

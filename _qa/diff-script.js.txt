@@ -1,0 +1,12 @@
+--- _backup-original/js/script.js	2026-11-11 16:58:58.357305600 +0530
++++ js/script.js	2026-11-12 23:32:20.883519300 +0530
+@@ -344,8 +344,7 @@
+     // 'too_fast' (the backend's ms_to_submit check) deliberately lands here:
+     // it gets the same generic message as any other failure. Never tell the
+     // visitor the submission was rejected for being too quick.
+-    note.innerHTML = 'We could not send that just now. Please try again, or call us on ' +
+-      '<a href="tel:+' + CLINIC_PHONE_DIGITS + '">' + formatPhoneDisplay(CLINIC_PHONE_DIGITS) + '</a>.';
++    note.innerHTML = 'Sorry, something went wrong. Please try again in a moment.';
+   }
+ }
+ 

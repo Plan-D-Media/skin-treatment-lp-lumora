@@ -1,0 +1,418 @@
+PROTECTED-ZONE DIFF  (baseline = files just before the treatments redesign, 2026-11-13)
+
+1. Whole files
+   js/script.js       baseline 50fb11d9608a6a14  now 50fb11d9608a6a14  ->  IDENTICAL
+   js/thank-you.js    baseline 318703aaeed57d88  now 318703aaeed57d88  ->  IDENTICAL
+   js/ui.js           baseline a10fbaeb0a03305e  now c44ecbb0b1938245  ->  CHANGED
+   js/clinic-slider.js baseline 649d225f14b8bee1  now 649d225f14b8bee1  ->  IDENTICAL
+   thank-you.html     baseline cfb64dc86b80892c  now cfb64dc86b80892c  ->  IDENTICAL
+   css/style.css      baseline 808228cbb7e59c2b  now 808228cbb7e59c2b  ->  IDENTICAL
+   css/phase1.css     baseline 44024dcb38846952  now 44024dcb38846952  ->  IDENTICAL
+   css/hero-clinic.css baseline e92b55576d930b82  now e92b55576d930b82  ->  IDENTICAL
+   css/why.css        baseline ce7081d53c2f162d  now ce7081d53c2f162d  ->  IDENTICAL
+
+2. Blocks inside index.html (byte-for-byte; position may differ)
+   form card (old hero -> section 3)  IDENTICAL  (268 bytes; line 768 -> 773)
+   enquiry form <template>            IDENTICAL  (3910 bytes; line 1494 -> 1661)
+   booking modal                      IDENTICAL  (707 bytes; line 1480 -> 1647)
+   footer form section                IDENTICAL  (501 bytes; line 1404 -> 1571)
+   call-widget placeholder            IDENTICAL  (431 bytes; line 1473 -> 1640)
+   sticky mobile bar                  IDENTICAL  (395 bytes; line 1463 -> 1630)
+   gtag / GTM head scripts            IDENTICAL  (340 bytes; line 27 -> 27)
+   script tags (ui.js, script.js)     IDENTICAL  (86 bytes; line 1562 -> 1729)
+
+3. Every form-related attribute in index.html (ids, names, data-form-location, data-open-modal, data-scroll-to-form, data-doctor)
+   baseline 49 occurrences, now 71  ->  DIFFERENT
+   removed: Counter()
+   added:   Counter({'data-open-modal': 22})
+
+4. Full unified diff of index.html (for review)
+--- baseline/index.html
++++ index.html
+@@ -471,0 +472,5 @@
++  <!-- "Skin Treatments We Offer" explorer (every rule scoped to .lmr-treatments); below the fold, so non-blocking -->
++  <link rel="stylesheet" href="css/treatments.css" media="print" onload="this.media='all'">
++  <noscript>
++    <link rel="stylesheet" href="css/treatments.css">
++  </noscript>
+@@ -1103,30 +1108,86 @@
+-    <!-- ============ 8. TREATMENTS ============ -->
+-    <section class="section treatments" id="treatments">
+-      <div class="container">
+-        <p class="eyebrow reveal">Treatments</p>
+-        <h2 class="reveal">Skin Treatments We Offer</h2>
+-
+-        <div class="treatment-group">
+-          <p class="eyebrow reveal">Acne &amp; Scars</p>
+-          <h3 class="treatment-group-title reveal">Acne &amp; Acne Scar Treatment</h3>
+-          <div class="treatment-grid">
+-            <article class="treatment-card reveal">
+-              <h4>Chemical Peels</h4>
+-              <p>Clears the pore and fades the marks acne leaves behind.</p>
+-            </article>
+-            <article class="treatment-card reveal">
+-              <h4>GFC PRP</h4>
+-              <p>Growth factors from your own blood, used to support scar repair.</p>
+-            </article>
+-            <article class="treatment-card reveal">
+-              <h4>Microneedling</h4>
+-              <p>Controlled micro-injury that prompts the skin to rebuild.</p>
+-            </article>
+-            <article class="treatment-card reveal">
+-              <h4>Subcision</h4>
+-              <p>Releases scars tethered from underneath so they can lift.</p>
+-            </article>
+-            <article class="treatment-card reveal">
+-              <h4>Intralesional Injections</h4>
+-              <p>Flattens raised lumps and nodules within days.</p>
+-            </article>
++    <!-- ============ 8. TREATMENTS (tabbed explorer; styles in css/treatments.css, tabs in js/ui.js) ============
++         Every name and description is the original text. Each category is one self-contained
++         .lmr-tr-panel; js/ui.js builds the tabs from the panels (label, icon, count), so removing a
++         panel removes its tab too, and with one panel left no tabs are shown. Without JS every panel
++         shows, stacked. Every booking button uses the page's existing modal hook only. -->
++    <section class="section treatments lmr-treatments" id="treatments" aria-labelledby="treatments-heading">
++      <div class="lmr-tr-wrap">
++        <header class="lmr-tr-head">
++          <p class="lmr-tr-overline lmr-tr-overline-main">Treatments</p>
++          <h2 class="lmr-tr-title" id="treatments-heading">Skin Treatments We Offer</h2>
++          <p class="lmr-tr-sub">Choose a concern to see the treatments our dermatologists offer for it.</p>
++        </header>
++
++        <div class="lmr-tr-tabs-scroller">
++          <div class="lmr-tr-tabs" role="tablist" aria-label="Treatment categories" hidden></div>
++        </div>
++
++        <div class="lmr-tr-panels">
++          <!-- Category: Acne & Scars (self-contained: delete this block to drop the category) -->
++          <div class="lmr-tr-panel" id="tr-panel-acne" data-tr-panel data-tr-label="Acne &amp; Scars">
++            <div class="lmr-tr-feature">
++              <span class="lmr-tr-feature-icon"><svg class="lmr-tr-cat-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3.5c-4.4 0-7.5 3.4-7.5 8.1 0 5 3.4 9 7.5 9s7.5-4 7.5-9c0-4.7-3.1-8.1-7.5-8.1Z"/><circle cx="9" cy="12.5" r="1.1"/><circle cx="14.8" cy="10.6" r=".8"/><circle cx="14.2" cy="15.2" r="1.4"/></svg></span>
++              <div class="lmr-tr-feature-text">
++                <p class="lmr-tr-overline">Acne &amp; Scars</p>
++                <h3 class="lmr-tr-feature-title">Acne &amp; Acne Scar Treatment</h3>
++                <p class="lmr-tr-feature-line">Every plan begins with a dermatologist consultation.</p>
++              </div>
++              <button type="button" class="lmr-tr-feature-cta" data-open-modal>Book a Consultation</button>
++            </div>
++            <ul class="lmr-tr-list" role="list">
++              <li class="lmr-tr-item">
++                <article class="lmr-tr-card">
++                  <span class="lmr-tr-tile"><svg class="lmr-tr-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9.5 3.5h5M10.5 3.5v3.5L6.6 14a5 5 0 1 0 10.8 0L13.5 7V3.5"/><path d="M7.5 15.5h9"/></svg></span>
++                  <div class="lmr-tr-body">
++                    <h4 class="lmr-tr-name">Chemical Peels</h4>
++                    <p class="lmr-tr-desc">Clears the pore and fades the marks acne leaves behind.</p>
++                    <button type="button" class="lmr-tr-book" data-open-modal>Book this treatment<span class="lmr-tr-sr">: Chemical Peels</span> <span aria-hidden="true">&rarr;</span></button>
++                  </div>
++                  <svg class="lmr-tr-chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 5.5 15.5 12 9 18.5"/></svg>
++                </article>
++              </li>
++              <li class="lmr-tr-item">
++                <article class="lmr-tr-card">
++                  <span class="lmr-tr-tile"><svg class="lmr-tr-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3.5s-6 6.6-6 10.7a6 6 0 0 0 12 0C18 10.1 12 3.5 12 3.5Z"/><path d="M12 11.5v5M9.5 14h5"/></svg></span>
++                  <div class="lmr-tr-body">
++                    <h4 class="lmr-tr-name">GFC PRP</h4>
++                    <p class="lmr-tr-desc">Growth factors from your own blood, used to support scar repair.</p>
++                    <button type="button" class="lmr-tr-book" data-open-modal>Book this treatment<span class="lmr-tr-sr">: GFC PRP</span> <span aria-hidden="true">&rarr;</span></button>
++                  </div>
++                  <svg class="lmr-tr-chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 5.5 15.5 12 9 18.5"/></svg>
++                </article>
++              </li>
++              <li class="lmr-tr-item">
++                <article class="lmr-tr-card">
++                  <span class="lmr-tr-tile"><svg class="lmr-tr-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="9" height="5.5" rx="2.75"/><path d="M5.5 10.5v1.8M8 10.5v1.8M10.5 10.5v1.8M12.5 7.75h2.5l5 9.5"/></svg></span>
++                  <div class="lmr-tr-body">
++                    <h4 class="lmr-tr-name">Microneedling</h4>
++                    <p class="lmr-tr-desc">Controlled micro-injury that prompts the skin to rebuild.</p>
++                    <button type="button" class="lmr-tr-book" data-open-modal>Book this treatment<span class="lmr-tr-sr">: Microneedling</span> <span aria-hidden="true">&rarr;</span></button>
++                  </div>
++                  <svg class="lmr-tr-chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 5.5 15.5 12 9 18.5"/></svg>
++                </article>
++              </li>
++              <li class="lmr-tr-item">
++                <article class="lmr-tr-card">
++                  <span class="lmr-tr-tile"><svg class="lmr-tr-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3.5 9.5c2.5 0 3-2 5.5-2s3 2 5.5 2 3-2 5.5-2"/><path d="M4.5 17.5h11l4-2.5"/><path d="M9 13.5l3-2.5 3 2.5"/></svg></span>
++                  <div class="lmr-tr-body">
++                    <h4 class="lmr-tr-name">Subcision</h4>
++                    <p class="lmr-tr-desc">Releases scars tethered from underneath so they can lift.</p>
++                    <button type="button" class="lmr-tr-book" data-open-modal>Book this treatment<span class="lmr-tr-sr">: Subcision</span> <span aria-hidden="true">&rarr;</span></button>
++                  </div>
++                  <svg class="lmr-tr-chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 5.5 15.5 12 9 18.5"/></svg>
++                </article>
++              </li>
++              <li class="lmr-tr-item">
++                <article class="lmr-tr-card">
++                  <span class="lmr-tr-tile"><svg class="lmr-tr-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14.5 4.5l5 5M17 7l-8.5 8.5-3-3L14 4M7 13l1.5 1.5M10 10l1.5 1.5M5.5 15.5 3.5 20.5l5-2"/></svg></span>
++                  <div class="lmr-tr-body">
++                    <h4 class="lmr-tr-name">Intralesional Injections</h4>
++                    <p class="lmr-tr-desc">Flattens raised lumps and nodules within days.</p>
++                    <button type="button" class="lmr-tr-book" data-open-modal>Book this treatment<span class="lmr-tr-sr">: Intralesional Injections</span> <span aria-hidden="true">&rarr;</span></button>
++                  </div>
++                  <svg class="lmr-tr-chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 5.5 15.5 12 9 18.5"/></svg>
++                </article>
++              </li>
++            </ul>
+@@ -1134,28 +1195,68 @@
+-        </div>
+-
+-        <div class="hairline treatment-group-divider" aria-hidden="true"></div>
+-
+-        <div class="treatment-group">
+-          <p class="eyebrow reveal">Pigmentation</p>
+-          <h3 class="treatment-group-title reveal">Pigmentation &amp; Skin Lightening</h3>
+-          <div class="treatment-grid">
+-            <article class="treatment-card reveal">
+-              <h4>Skin Lightening Laser</h4>
+-              <p>Clears tan and dullness to return your own natural tone.</p>
+-            </article>
+-            <article class="treatment-card reveal">
+-              <h4>Skin Lightening Chemical Peel</h4>
+-              <p>Resurfaces the dull outer layer to brighten the skin.</p>
+-            </article>
+-            <article class="treatment-card reveal">
+-              <h4>Carbon Laser Peel Treatment</h4>
+-              <p>Lifts oil and debris from inside the pore for same-day clarity.</p>
+-            </article>
+-            <article class="treatment-card reveal">
+-              <h4>Melasma Treatment</h4>
+-              <p>A controlled long-term plan for patches that return each summer.</p>
+-            </article>
+-            <article class="treatment-card reveal">
+-              <h4>Dark Circles Treatment</h4>
+-              <p>Identifies whether the shadow is pigment, blood or hollowness.</p>
+-            </article>
++          <!-- Category: Pigmentation (self-contained: delete this block to drop the category) -->
++          <div class="lmr-tr-panel" id="tr-panel-pigmentation" data-tr-panel data-tr-label="Pigmentation">
++            <div class="lmr-tr-feature">
++              <span class="lmr-tr-feature-icon"><svg class="lmr-tr-cat-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5a8.5 8.5 0 0 1 0 17Z" class="lmr-tr-fill"/></svg></span>
++              <div class="lmr-tr-feature-text">
++                <p class="lmr-tr-overline">Pigmentation</p>
++                <h3 class="lmr-tr-feature-title">Pigmentation &amp; Skin Lightening</h3>
++                <p class="lmr-tr-feature-line">Every plan begins with a dermatologist consultation.</p>
++              </div>
++              <button type="button" class="lmr-tr-feature-cta" data-open-modal>Book a Consultation</button>
++            </div>
++            <ul class="lmr-tr-list" role="list">
++              <li class="lmr-tr-item">
++                <article class="lmr-tr-card">
++                  <span class="lmr-tr-tile"><svg class="lmr-tr-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="3.5" width="9" height="5" rx="1.6"/><path d="M8 8.5v3M8 14v2.5M8 19v1.5"/><path d="M5 20.5h14"/><path d="M15.5 6h4M17.5 4v4"/></svg></span>
++                  <div class="lmr-tr-body">
++                    <h4 class="lmr-tr-name">Skin Lightening Laser</h4>
++                    <p class="lmr-tr-desc">Clears tan and dullness to return your own natural tone.</p>
++                    <button type="button" class="lmr-tr-book" data-open-modal>Book this treatment<span class="lmr-tr-sr">: Skin Lightening Laser</span> <span aria-hidden="true">&rarr;</span></button>
++                  </div>
++                  <svg class="lmr-tr-chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 5.5 15.5 12 9 18.5"/></svg>
++                </article>
++              </li>
++              <li class="lmr-tr-item">
++                <article class="lmr-tr-card">
++                  <span class="lmr-tr-tile"><svg class="lmr-tr-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 4.5h10.5l3.5 3.5v11.5H5Z"/><path d="M15.5 4.5V8H19"/><path d="M8 12.5h8M8 16h5"/></svg></span>
++                  <div class="lmr-tr-body">
++                    <h4 class="lmr-tr-name">Skin Lightening Chemical Peel</h4>
++                    <p class="lmr-tr-desc">Resurfaces the dull outer layer to brighten the skin.</p>
++                    <button type="button" class="lmr-tr-book" data-open-modal>Book this treatment<span class="lmr-tr-sr">: Skin Lightening Chemical Peel</span> <span aria-hidden="true">&rarr;</span></button>
++                  </div>
++                  <svg class="lmr-tr-chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 5.5 15.5 12 9 18.5"/></svg>
++                </article>
++              </li>
++              <li class="lmr-tr-item">
++                <article class="lmr-tr-card">
++                  <span class="lmr-tr-tile"><svg class="lmr-tr-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="9" cy="14" r="5.5" class="lmr-tr-fill"/><path d="M13.5 9.5 19.5 3.5M16 10.5l4-1.5M12.5 7l1.5-4"/></svg></span>
++                  <div class="lmr-tr-body">
++                    <h4 class="lmr-tr-name">Carbon Laser Peel Treatment</h4>
++                    <p class="lmr-tr-desc">Lifts oil and debris from inside the pore for same-day clarity.</p>
++                    <button type="button" class="lmr-tr-book" data-open-modal>Book this treatment<span class="lmr-tr-sr">: Carbon Laser Peel Treatment</span> <span aria-hidden="true">&rarr;</span></button>
++                  </div>
++                  <svg class="lmr-tr-chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 5.5 15.5 12 9 18.5"/></svg>
++                </article>
++              </li>
++              <li class="lmr-tr-item">
++                <article class="lmr-tr-card">
++                  <span class="lmr-tr-tile"><svg class="lmr-tr-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3.5c-4.4 0-7.5 3.4-7.5 8.1 0 5 3.4 9 7.5 9s7.5-4 7.5-9c0-4.7-3.1-8.1-7.5-8.1Z"/><path class="lmr-tr-fill" d="M13.6 12.3c1-.8 2.7-.7 3.2.4.4 1.2-.3 2.6-1.6 2.9-1.2.2-1.7-.5-2.1-1.3-.3-.7-.2-1.5.5-2Z"/><path d="M9.5 10.5h1.2M13.5 10.5h1.2"/></svg></span>
++                  <div class="lmr-tr-body">
++                    <h4 class="lmr-tr-name">Melasma Treatment</h4>
++                    <p class="lmr-tr-desc">A controlled long-term plan for patches that return each summer.</p>
++                    <button type="button" class="lmr-tr-book" data-open-modal>Book this treatment<span class="lmr-tr-sr">: Melasma Treatment</span> <span aria-hidden="true">&rarr;</span></button>
++                  </div>
++                  <svg class="lmr-tr-chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 5.5 15.5 12 9 18.5"/></svg>
++                </article>
++              </li>
++              <li class="lmr-tr-item">
++                <article class="lmr-tr-card">
++                  <span class="lmr-tr-tile"><svg class="lmr-tr-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 11s3.4-5 9-5 9 5 9 5-3.4 5-9 5-9-5-9-5Z"/><circle cx="12" cy="11" r="2.4"/><path d="M6.5 19c3.5 1.6 7.5 1.6 11 0"/></svg></span>
++                  <div class="lmr-tr-body">
++                    <h4 class="lmr-tr-name">Dark Circles Treatment</h4>
++                    <p class="lmr-tr-desc">Identifies whether the shadow is pigment, blood or hollowness.</p>
++                    <button type="button" class="lmr-tr-book" data-open-modal>Book this treatment<span class="lmr-tr-sr">: Dark Circles Treatment</span> <span aria-hidden="true">&rarr;</span></button>
++                  </div>
++                  <svg class="lmr-tr-chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 5.5 15.5 12 9 18.5"/></svg>
++                </article>
++              </li>
++            </ul>
+@@ -1163,24 +1264,57 @@
+-        </div>
+-
+-        <div class="hairline treatment-group-divider" aria-hidden="true"></div>
+-
+-        <div class="treatment-group">
+-          <p class="eyebrow reveal">Rejuvenation</p>
+-          <h3 class="treatment-group-title reveal">Skin Rejuvenation</h3>
+-          <div class="treatment-grid">
+-            <article class="treatment-card reveal">
+-              <h4>Face PRP / Vampire Facial</h4>
+-              <p>Renewal drawn from your own blood, with nothing else added.</p>
+-            </article>
+-            <article class="treatment-card reveal">
+-              <h4>Skin Boosters</h4>
+-              <p>Deep hydration placed in the layer a cream cannot reach.</p>
+-            </article>
+-            <article class="treatment-card reveal">
+-              <h4>Hydrafacials</h4>
+-              <p>Pore-deep cleanse with visible same-day radiance.</p>
+-            </article>
+-            <article class="treatment-card reveal">
+-              <h4>Medifacials</h4>
+-              <p>A clinical facial prescribed to your skin rather than picked from a menu.</p>
+-            </article>
++          <!-- Category: Rejuvenation (self-contained: delete this block to drop the category) -->
++          <div class="lmr-tr-panel" id="tr-panel-rejuvenation" data-tr-panel data-tr-label="Rejuvenation">
++            <div class="lmr-tr-feature">
++              <span class="lmr-tr-feature-icon"><svg class="lmr-tr-cat-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M11 3.5c.6 3.9 2.6 5.9 6.5 6.5-3.9.6-5.9 2.6-6.5 6.5-.6-3.9-2.6-5.9-6.5-6.5 3.9-.6 5.9-2.6 6.5-6.5Z"/><path d="M18 14.5c.3 1.9 1.1 2.7 3 3-1.9.3-2.7 1.1-3 3-.3-1.9-1.1-2.7-3-3 1.9-.3 2.7-1.1 3-3Z"/></svg></span>
++              <div class="lmr-tr-feature-text">
++                <p class="lmr-tr-overline">Rejuvenation</p>
++                <h3 class="lmr-tr-feature-title">Skin Rejuvenation</h3>
++                <p class="lmr-tr-feature-line">Every plan begins with a dermatologist consultation.</p>
++              </div>
++              <button type="button" class="lmr-tr-feature-cta" data-open-modal>Book a Consultation</button>
++            </div>
++            <ul class="lmr-tr-list" role="list">
++              <li class="lmr-tr-item">
++                <article class="lmr-tr-card">
++                  <span class="lmr-tr-tile"><svg class="lmr-tr-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M11 4s-5 5.5-5 9a5 5 0 0 0 10 0c0-3.5-5-9-5-9Z"/><path d="M18.5 3.5c.2 1.4.9 2.1 2.3 2.3-1.4.2-2.1.9-2.3 2.3-.2-1.4-.9-2.1-2.3-2.3 1.4-.2 2.1-.9 2.3-2.3Z"/></svg></span>
++                  <div class="lmr-tr-body">
++                    <h4 class="lmr-tr-name">Face PRP / Vampire Facial</h4>
++                    <p class="lmr-tr-desc">Renewal drawn from your own blood, with nothing else added.</p>
++                    <button type="button" class="lmr-tr-book" data-open-modal>Book this treatment<span class="lmr-tr-sr">: Face PRP / Vampire Facial</span> <span aria-hidden="true">&rarr;</span></button>
++                  </div>
++                  <svg class="lmr-tr-chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 5.5 15.5 12 9 18.5"/></svg>
++                </article>
++              </li>
++              <li class="lmr-tr-item">
++                <article class="lmr-tr-card">
++                  <span class="lmr-tr-tile"><svg class="lmr-tr-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 4.5s-3.5 3.9-3.5 6.4a3.5 3.5 0 0 0 7 0C11.5 8.4 8 4.5 8 4.5Z"/><path d="M16.5 10s-3 3.3-3 5.5a3 3 0 0 0 6 0c0-2.2-3-5.5-3-5.5Z"/><path d="M6 19.5h4"/></svg></span>
++                  <div class="lmr-tr-body">
++                    <h4 class="lmr-tr-name">Skin Boosters</h4>
++                    <p class="lmr-tr-desc">Deep hydration placed in the layer a cream cannot reach.</p>
++                    <button type="button" class="lmr-tr-book" data-open-modal>Book this treatment<span class="lmr-tr-sr">: Skin Boosters</span> <span aria-hidden="true">&rarr;</span></button>
++                  </div>
++                  <svg class="lmr-tr-chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 5.5 15.5 12 9 18.5"/></svg>
++                </article>
++              </li>
++              <li class="lmr-tr-item">
++                <article class="lmr-tr-card">
++                  <span class="lmr-tr-tile"><svg class="lmr-tr-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3.5 15c2 0 2.7-1.5 4.3-1.5S10 15 12 15s2.6-1.5 4.2-1.5S18.5 15 20.5 15M3.5 19c2 0 2.7-1.5 4.3-1.5S10 19 12 19s2.6-1.5 4.2-1.5S18.5 19 20.5 19"/><circle cx="9" cy="8" r="2"/><circle cx="14.5" cy="5.5" r="1.3"/><circle cx="15.5" cy="10" r="1"/></svg></span>
++                  <div class="lmr-tr-body">
++                    <h4 class="lmr-tr-name">Hydrafacials</h4>
++                    <p class="lmr-tr-desc">Pore-deep cleanse with visible same-day radiance.</p>
++                    <button type="button" class="lmr-tr-book" data-open-modal>Book this treatment<span class="lmr-tr-sr">: Hydrafacials</span> <span aria-hidden="true">&rarr;</span></button>
++                  </div>
++                  <svg class="lmr-tr-chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 5.5 15.5 12 9 18.5"/></svg>
++                </article>
++              </li>
++              <li class="lmr-tr-item">
++                <article class="lmr-tr-card">
++                  <span class="lmr-tr-tile"><svg class="lmr-tr-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3.5c-4.4 0-7.5 3.4-7.5 8.1 0 5 3.4 9 7.5 9s7.5-4 7.5-9c0-4.7-3.1-8.1-7.5-8.1Z"/><path d="M12 9.5v5M9.5 12h5"/></svg></span>
++                  <div class="lmr-tr-body">
++                    <h4 class="lmr-tr-name">Medifacials</h4>
++                    <p class="lmr-tr-desc">A clinical facial prescribed to your skin rather than picked from a menu.</p>
++                    <button type="button" class="lmr-tr-book" data-open-modal>Book this treatment<span class="lmr-tr-sr">: Medifacials</span> <span aria-hidden="true">&rarr;</span></button>
++                  </div>
++                  <svg class="lmr-tr-chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 5.5 15.5 12 9 18.5"/></svg>
++                </article>
++              </li>
++            </ul>
+@@ -1188,24 +1322,57 @@
+-        </div>
+-
+-        <div class="hairline treatment-group-divider" aria-hidden="true"></div>
+-
+-        <div class="treatment-group">
+-          <p class="eyebrow reveal">Removals</p>
+-          <h3 class="treatment-group-title reveal">Moles, Warts &amp; Removals</h3>
+-          <div class="treatment-grid">
+-            <article class="treatment-card reveal">
+-              <h4>Moles Removal</h4>
+-              <p>Examined first, removed second, with histopathology where needed.</p>
+-            </article>
+-            <article class="treatment-card reveal">
+-              <h4>Warts Removal</h4>
+-              <p>A viral infection rather than a blemish, treated to limit spread.</p>
+-            </article>
+-            <article class="treatment-card reveal">
+-              <h4>Skin Tag Removal</h4>
+-              <p>Removed in a single visit, never tied off at home.</p>
+-            </article>
+-            <article class="treatment-card reveal">
+-              <h4>Tattoo Removal</h4>
+-              <p>Faded session by session, with honest limits stated upfront.</p>
+-            </article>
++          <!-- Category: Removals (self-contained: delete this block to drop the category) -->
++          <div class="lmr-tr-panel" id="tr-panel-removals" data-tr-panel data-tr-label="Removals">
++            <div class="lmr-tr-feature">
++              <span class="lmr-tr-feature-icon"><svg class="lmr-tr-cat-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 4.5 12.2 15M9.5 3.5l4.2 11"/><path d="M12.2 15l1.5-.5 1.8 5.2a1.6 1.6 0 0 1-3 1Z"/><circle cx="18.5" cy="7" r="2.2"/><path d="M17 8.6 15.2 10.5"/></svg></span>
++              <div class="lmr-tr-feature-text">
++                <p class="lmr-tr-overline">Removals</p>
++                <h3 class="lmr-tr-feature-title">Moles, Warts &amp; Removals</h3>
++                <p class="lmr-tr-feature-line">Every plan begins with a dermatologist consultation.</p>
++              </div>
++              <button type="button" class="lmr-tr-feature-cta" data-open-modal>Book a Consultation</button>
++            </div>
++            <ul class="lmr-tr-list" role="list">
++              <li class="lmr-tr-item">
++                <article class="lmr-tr-card">
++                  <span class="lmr-tr-tile"><svg class="lmr-tr-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6"/><path d="M15 15l5 5"/><circle cx="10.5" cy="10.5" r="1.8" class="lmr-tr-fill"/></svg></span>
++                  <div class="lmr-tr-body">
++                    <h4 class="lmr-tr-name">Moles Removal</h4>
++                    <p class="lmr-tr-desc">Examined first, removed second, with histopathology where needed.</p>
++                    <button type="button" class="lmr-tr-book" data-open-modal>Book this treatment<span class="lmr-tr-sr">: Moles Removal</span> <span aria-hidden="true">&rarr;</span></button>
++                  </div>
++                  <svg class="lmr-tr-chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 5.5 15.5 12 9 18.5"/></svg>
++                </article>
++              </li>
++              <li class="lmr-tr-item">
++                <article class="lmr-tr-card">
++                  <span class="lmr-tr-tile"><svg class="lmr-tr-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 18.5h14"/><path d="M7 18.5c-.8-2.4.2-4.3 1.8-4.6-.2-2 1.5-3.4 3.2-2.9.9-1.6 3.3-1.4 3.9.4 1.7.2 2.4 2.2 1.4 3.4 1 1.3.5 3.1-.3 3.7"/></svg></span>
++                  <div class="lmr-tr-body">
++                    <h4 class="lmr-tr-name">Warts Removal</h4>
++                    <p class="lmr-tr-desc">A viral infection rather than a blemish, treated to limit spread.</p>
++                    <button type="button" class="lmr-tr-book" data-open-modal>Book this treatment<span class="lmr-tr-sr">: Warts Removal</span> <span aria-hidden="true">&rarr;</span></button>
++                  </div>
++                  <svg class="lmr-tr-chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 5.5 15.5 12 9 18.5"/></svg>
++                </article>
++              </li>
++              <li class="lmr-tr-item">
++                <article class="lmr-tr-card">
++                  <span class="lmr-tr-tile"><svg class="lmr-tr-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="6.5" cy="7" r="2.5"/><circle cx="6.5" cy="17" r="2.5"/><path d="M8.6 8.4 20 16.5M8.6 15.6 20 7.5"/></svg></span>
++                  <div class="lmr-tr-body">
++                    <h4 class="lmr-tr-name">Skin Tag Removal</h4>
++                    <p class="lmr-tr-desc">Removed in a single visit, never tied off at home.</p>
++                    <button type="button" class="lmr-tr-book" data-open-modal>Book this treatment<span class="lmr-tr-sr">: Skin Tag Removal</span> <span aria-hidden="true">&rarr;</span></button>
++                  </div>
++                  <svg class="lmr-tr-chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 5.5 15.5 12 9 18.5"/></svg>
++                </article>
++              </li>
++              <li class="lmr-tr-item">
++                <article class="lmr-tr-card">
++                  <span class="lmr-tr-tile"><svg class="lmr-tr-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 19.5S4.5 15 4.5 9.6A3.9 3.9 0 0 1 12 8a3.9 3.9 0 0 1 7.5 1.6c0 5.4-7.5 9.9-7.5 9.9Z" stroke-dasharray="2.6 2.4"/></svg></span>
++                  <div class="lmr-tr-body">
++                    <h4 class="lmr-tr-name">Tattoo Removal</h4>
++                    <p class="lmr-tr-desc">Faded session by session, with honest limits stated upfront.</p>
++                    <button type="button" class="lmr-tr-book" data-open-modal>Book this treatment<span class="lmr-tr-sr">: Tattoo Removal</span> <span aria-hidden="true">&rarr;</span></button>
++                  </div>
++                  <svg class="lmr-tr-chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 5.5 15.5 12 9 18.5"/></svg>
++                </article>
++              </li>
++            </ul>
+@@ -1215 +1382 @@
+-        <div class="treatments-toggle-row reveal">
++        <div class="lmr-tr-footer">
