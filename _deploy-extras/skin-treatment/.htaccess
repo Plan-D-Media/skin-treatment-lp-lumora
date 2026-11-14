@@ -1,0 +1,5 @@
+# Upload this file as /home/hfpdzsmr/lumoraskinclinic.com/skin-treatment/.htaccess (the OLD folder of the addon domain, NOT public_html); it 301-redirects every old URL to /skin-hair-clinic/ and keeps gclid/UTM query strings. Do not merge it into the site-root .htaccess.
+RewriteEngine On
+RewriteBase /skin-treatment/
+# Everything under /skin-treatment/<anything> -> /skin-hair-clinic/<anything>, query string preserved (QSA), permanent (R=301), stop (L)
+RewriteRule ^(.*)$ /skin-hair-clinic/$1 [R=301,QSA,L]
